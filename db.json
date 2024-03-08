@@ -1,99 +1,13 @@
 {
-  "relatorios": [
-    {
-      "id": 1,
-      "Entretenimento": [
-        "Entretenimento 1",
-        "Entretenimento 2",
-        "Entretenimento 3",
-        "Entretenimento 4"
-      ]
-    },
-    {
-      "id": 2,
-      "Esportes": [
-        "Esporte1",
-        "Esporte2",
-        "Esporte3",
-        "Esporte4"
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Home"
-    },
-    {
-      "id": 4,
-      "Jornalismo": [
-        "Jornalismo 1",
-        "Jornalismo 2",
-        "Jornalismo 3",
-        "Jornalismo 4"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Legado"
-    },
-    {
-      "id": 6,
-      "name": "Grupo Globo"
-    },
-    {
-      "id": 7,
-      "name": "Parceiros"
-    },
-    {
-      "id": 8,
-      "Plataformas": [
-        "Backstage1",
-        "Backstage2",
-        "Backstage3",
-        "Backstage4",
-        "Backstage7",
-        "Backstage8",
-        "CORE",
-        "Interatividade",
-        "Cobertura",
-        "bs-gateway",
-        "Busca"
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Novos Produtos"
-    },
-    {
-      "id": 10,
-      "name": "Infraestrutura"
-    },
-    {
-      "id": 11,
-      "Vendas": [
-        "Vendas 1",
-        "Vendas 2",
-        "Vendas 3"
-      ]
-    },
-    {
-      "id": 12,
-      "Webmedia": [
-        "videos 1",
-        "videos 2",
-        "videos 3"
-      ]
-    },
-    {
-      "id": 13,
-      "name": "Big Data"
-    },
-    {
-      "id": 14,
-      "name": "Globo ID"
-    },
-    {
-      "id": 15,
-      "name": "Outros"
-    }
-  ]
+  "posts": [
+    { "id": "1", "title": "a title", "views": 100 },
+    { "id": "2", "title": "another title", "views": 200 }
+  ],
+  "comments": [
+    { "id": "1", "text": "a comment about post 1", "postId": "1" },
+    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

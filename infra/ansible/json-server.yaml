@@ -1,0 +1,22 @@
+---
+- name: Setup NGINX Server
+  hosts: instances
+  remote_user: ec2-user
+  become: yes
+
+  tasks:
+  - name: yum update
+    yum:
+      update_cache: yes
+
+  - name: Install NPM
+    yum:
+      name: npm
+      state: latest  
+  
+  - name: Install Json-Server
+    yum:
+      name: npm i json-server
+      state: latest
+  
+  

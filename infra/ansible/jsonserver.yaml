@@ -1,0 +1,12 @@
+---
+- hosts: instances
+  become: yes
+  tasks:
+   - name: install Nodejs
+     yum:
+       name: 
+       - nodejs 
+       - json-server
+
+# ansible-playbook jsonserver.yaml
+# ansible-playbook -e ansible_python_interpreter=/usr/bin/python2

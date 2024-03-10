@@ -1,76 +1,43 @@
 # Steps
 
-- Adicionar o host da AWS no arquivo HOSTS
+## Adicionar os IPs das instâncias no arquivo de hosts
 
 ```bash
-✗ ansible -m ping all
-[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
-
-✗ ansible -m ping all
-
-44.204.208.40 | UNREACHABLE! => {
-    "changed": false,
-    "msg": "Failed to connect to the host via ssh: ssh: connect to host 44.204.208.40 port 22: Connection timed out",
-    "unreachable": true }
-```
-
-## Adicionar o IP da instância no arquivo de hosts
-
-```bash
-✗ sudo vi /etc/ansible/hosts
-44.204.208.40 ansible_ssh_private_key_file=~/.ssh/id_rsa.pub ansible_user=root
-
+✗ sudo /bin/sh -c 'echo "[instances]" >> /etc/ansible/hosts "\n""ec2-user@ec2-44-214-42-148.compute-1.amazonaws.com" >> /etc/ansible/hosts "\n""ec2-user@ec2-3-239-203-125.compute-1.amazonaws.com" >> /etc/ansible/hosts'
 ```
 
 ## Visualizar o arquivo de hosts
 
 ```bash
 ✗ cat /etc/ansible/hosts
-# This is the default ansible 'hosts' file.
-#
-# It should live in /etc/ansible/hosts
-#
-#   - Comments begin with the '#' character
-#   - Blank lines are ignored
-#   - Groups of hosts are delimited by [header] elements
-#   - You can enter hostnames or ip addresses
-#   - A hostname/ip can be a member of multiple groups
 
-# Ex 1: Ungrouped hosts, specify before any group headers.
+[instances] 
+ec2-user@ec2-44-214-42-148.compute-1.amazonaws.com 
+ec2-user@ec2-3-239-203-125.compute-1.amazonaws.com
 
-#green.example.com
-#blue.example.com
-#192.168.100.1
-#192.168.100.10
+```
 
-# Ex 2: A collection of hosts belonging to the 'webservers' group
+## Verificar comunicação do ansible com as instâncias 
 
-#[webservers]
-#alpha.example.org
-#beta.example.org
-#192.168.1.100
-#192.168.1.110
+```bash
+✗ ansible -m ping all
 
-# If you have multiple hosts following a pattern you can specify
-# them like this:
-
-#www[001:006].example.com
-
-# Ex 3: A collection of database servers in the 'dbservers' group
-
-#[dbservers]
-#
-#db01.intranet.mydomain.net
-#db02.intranet.mydomain.net
-#10.25.1.56
-#10.25.1.57
-
-# Here's another example of host ranges, this time there are no
-# leading 0s:
-
-#db-[99:101]-node.example.com
-
-# node
-44.204.208.40 ansible_ssh_private_key_file=~/.ssh/id_rsa.pub ansible_user=root
-
+[WARNING]: Platform linux on host ec2-user@ec2-44-214-42-148.compute-1.amazonaws.com is using the discovered Python interpreter at /usr/bin/python3, but future installation of another
+Python interpreter could change this. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information.
+ec2-user@ec2-44-214-42-148.compute-1.amazonaws.com | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+[WARNING]: Platform linux on host ec2-user@ec2-3-239-203-125.compute-1.amazonaws.com is using the discovered Python interpreter at /usr/bin/python3, but future installation of another
+Python interpreter could change this. See https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more information.
+ec2-user@ec2-3-239-203-125.compute-1.amazonaws.com | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
 ```

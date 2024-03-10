@@ -33,6 +33,6 @@ Initializing provider plugins...
 │ operation not permitted
 
 
-Solução: sudo terraform providers lock
+Solução: sudo terraform providers lock && terraform init
 
 ***************************************************************************************************************************************************************************************
